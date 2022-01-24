@@ -38,6 +38,6 @@ class PullRequestSerializer(serializers.ModelSerializer):
                 pr.merge()
             except Exception as e:
                 print(e)
-                raise serializers.ValidationError('Conflicts on merge')
+                raise serializers.ValidationError(e)
         pr.save()
         return pr
