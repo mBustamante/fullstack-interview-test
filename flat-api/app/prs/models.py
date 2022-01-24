@@ -37,3 +37,6 @@ class PullRequest(models.Model):
     def close(self):
         self.status = PullRequest.CLOSED_STATUS
         self.save()
+
+
+# comment for test-2
