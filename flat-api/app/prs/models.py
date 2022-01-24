@@ -1,4 +1,5 @@
 
+from django.conf import settings
 from django.db import models
 
 
@@ -26,11 +27,13 @@ class PullRequest(models.Model):
     modified = models.DateTimeField(auto_now=True, editable=False, blank=True)
 
     def merge(self):
-        try:
-            pass
-        except Exception as e:
-            print(e)
+        repo = settings.REPO
+        repo.git.checkout(self.target)
+        repo.git.merge(self.source)
+
+        self.status = PullRequest.MERGED_STATUS
+        self.save()
 
     def close(self):
-        status = PullRequest.CLOSED_STATUS
-        status.save()
+        self.status = PullRequest.CLOSED_STATUS
+        self.save()
