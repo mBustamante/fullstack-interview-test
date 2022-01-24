@@ -38,6 +38,7 @@ class PullRequestSerializer(serializers.ModelSerializer):
                 pr.merge()
             except Exception as e:
                 print(e)
+                settings.REPO.git.reset('--hard')
                 raise serializers.ValidationError(e)
         pr.save()
         return pr
