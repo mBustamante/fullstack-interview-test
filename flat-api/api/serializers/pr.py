@@ -12,6 +12,20 @@ class PullRequestSerializer(serializers.ModelSerializer):
         fields = ('title', 'description', 'source', 'target',
                   'status',)
 
+    def validate_source(self, source):
+        try:
+            settings.REPO.heads[source]
+        except IndexError:
+            raise serializers.ValidationError('Invalid source branch')
+        return source
+
+    def validate_target(self, target):
+        try:
+            settings.REPO.heads[target]
+        except IndexError:
+            raise serializers.ValidationError('Invalid target branch')
+        return target
+
     def create(self, validated_data):
         if validated_data['status'] == PullRequest.CLOSED_STATUS:
             raise serializers.ValidationError('Invalid status')
@@ -22,7 +36,8 @@ class PullRequestSerializer(serializers.ModelSerializer):
         if pr.status == PullRequest.MERGED_STATUS:
             try:
                 pr.merge()
-            except Exception:
+            except Exception as e:
+                print(e)
                 raise serializers.ValidationError('Conflicts on merge')
         pr.save()
         return pr
