@@ -29,7 +29,7 @@ class PullRequest(models.Model):
     def merge(self):
         repo = settings.REPO
         repo.git.checkout(self.target)
-        repo.git.merge(self.source)
+        repo.git.merge('--no-ff', self.source)
 
         self.status = PullRequest.MERGED_STATUS
         self.save()

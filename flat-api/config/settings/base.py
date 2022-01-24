@@ -145,3 +145,6 @@ REPO_PATH = os.environ.get('REPO_PATH', '/git-project/')
 REPO_AUTHOR_NAME = os.environ.get('REPO_AUTHOR_NAME', 'invited')
 REPO_AUTHOR_EMAIL = os.environ.get('REPO_AUTHOR_EMAIL', 'invited@flat.mx')
 REPO = Repo(REPO_PATH)
+
+REPO.git.config('user.email', REPO_AUTHOR_EMAIL)
+REPO.git.config('user.name', REPO_AUTHOR_NAME)
