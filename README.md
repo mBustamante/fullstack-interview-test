@@ -61,9 +61,9 @@ Uses the default Django development server.
 
 Run server:
 
-    ```sh
+```sh
     $ docker-compose up --build
-    ```
+```
 
 this expose rest api on localhost:8000
 
@@ -73,27 +73,27 @@ this expose rest api on localhost:8000
 
 ### 1. Branches List:
 
-    `GET /api/branches/`
+`GET /api/branches/`
 
 
 ### 2. Commits List:
 
-    `GET /api/branches/<str:branch_name>/commits/`
+`GET /api/branches/<str:branch_name>/commits/`
 
 
 ### 3. Commits Detail:
 
-    `GET /api/commits/<str:commit_hex>/`
+`GET /api/commits/<str:commit_hex>/`
 
 
 ### 4. PRs List:
 
-    `GET /api/pull_requests/`
+`GET /api/pull_requests/`
 
 
 ### 4. PR Create:
 
-    `POST /api/pull_requests/`
+`POST /api/pull_requests/`
 
     {
         "title": "test title",
@@ -106,4 +106,4 @@ this expose rest api on localhost:8000
 
 ### 5. PR Close:
 
-    `POST /api/pull_requests/<int:id>/close/`
+`POST /api/pull_requests/<int:id>/close/`
