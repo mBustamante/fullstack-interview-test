@@ -34,3 +34,5 @@ class PullRequest(models.Model):
     def close(self):
         status = PullRequest.CLOSED_STATUS
         status.save()
+
+# comentario prueba 1
