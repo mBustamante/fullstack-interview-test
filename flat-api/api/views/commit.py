@@ -12,6 +12,9 @@ from api.serializers.commit import CommitDetailSerializer
 class CommitListView(APIView, generics.ListAPIView):
     serializer_class = CommitListSerializer
 
+    def get_queryset(self):
+        return None
+
     def list(self, request, *args, **kwargs):
         branch = self.kwargs['branch']
         repo = settings.REPO
@@ -26,6 +29,9 @@ class CommitListView(APIView, generics.ListAPIView):
 
 class CommitDetailView(APIView, generics.RetrieveAPIView):
     serializer_class = CommitDetailSerializer
+
+    def get_queryset(self):
+        return None
 
     def get(self, request, *args, **kwargs):
         commit_hex = self.kwargs['commit_hex']

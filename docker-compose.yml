@@ -13,3 +13,20 @@ services:
       - ./flat-api/:/app/api/
       - .:/git-project/
     env_file: flat-api/.env
+
+  # web:
+  #   restart: always
+  #   command : npm run serve
+  #   build:
+  #     context: ./flat-js
+  #   ports:
+  #     - "8080:8080"
+  #   volumes:
+  #     - ./flat-js/:/app/frontend/
+  #     - /app/frontend/node_modules
+  #   stdin_open: true
+  #   environment:
+  #     - NODE_ENV=development
+  #     - npm_config_unsafe_perm=true
+  #   depends_on:
+  #     - web-api

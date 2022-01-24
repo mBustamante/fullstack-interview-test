@@ -49,3 +49,61 @@ We also care about being able to run your test without significant effort on our
 - Your code has tests.
 
 If you come across any questions or anything we didn't cover on this README, feel free to reach out to us and we'll get you an answer as soon as possible. Happy coding!
+
+
+
+
+# Intructions
+
+## Server
+
+Uses the default Django development server.
+
+Run server:
+
+    ```sh
+    $ docker-compose up --build
+    ```
+
+this expose rest api on localhost:8000
+
+
+
+## REST API
+
+### 1. Branches List:
+
+    `GET /api/branches/`
+
+
+### 2. Commits List:
+
+    `GET /api/branches/<str:branch_name>/commits/`
+
+
+### 3. Commits Detail:
+
+    `GET /api/commits/<str:commit_hex>/`
+
+
+### 4. PRs List:
+
+    `GET /api/pull_requests/`
+
+
+### 4. PR Create:
+
+    `POST /api/pull_requests/`
+
+    {
+        "title": "test title",
+        "description": "test description",
+        "source": "source branch",
+        "target": "target branch",
+        "status": "open or merged"
+    }
+
+
+### 5. PR Close:
+
+    `POST /api/pull_requests/<int:id>/close/`

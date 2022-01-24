@@ -10,6 +10,9 @@ from api.serializers.branch import BranchSerializer
 class BranchView(APIView, generics.ListAPIView):
     serializer_class = BranchSerializer
 
+    def get_queryset(self):
+        return None
+
     def list(self, request, *args, **kwargs):
         repo = settings.REPO
 
