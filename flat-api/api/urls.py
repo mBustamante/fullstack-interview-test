@@ -23,6 +23,9 @@ pull_requests_urls = [
     path('',
          pr_views.PullRequestView.as_view(),
          name='pull_request_list_and_create'),
+    path('<int:pk>/close/',
+         pr_views.PullRequestCloseView.as_view(),
+         name='pull_request_close'),
 ]
 
 urlpatterns = [
