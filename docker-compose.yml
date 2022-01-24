@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  web-api:
+    restart: always
+    build: 
+      context: ./flat-api
+    command: bash -c "python manage.py migrate &&
+                      python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./flat-api/:/app/api/
+      - .:/git-project/
+    env_file: flat-api/.env
