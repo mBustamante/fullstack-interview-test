@@ -12,7 +12,7 @@ services:
     volumes:
       - ./flat-api/:/app/api/
       - .:/git-project/
-    env_file: flat-api/.env
+    # env_file: flat-api/.env
 
   # web:
   #   restart: always
